@@ -4,24 +4,53 @@
   <remote  name="aosp"
            fetch="https://android.googlesource.com"
            review="android-review.googlesource.com"
-           revision="refs/tags/android-5.1.1_r35" />
+           revision="refs/tags/android-5.1.1_r3" />
 
   <remote  name="github"
            fetch=".." />
 
-  <default revision="refs/heads/stable/cm-12.1-YOG7D"
+  <default revision="refs/heads/stable/cm-12.1-YOG4P"
            remote="github"
            sync-c="true"
            sync-j="4" />
 
-  <project path="build" name="mer-hybris/android_build" groups="pdk,tradefed" revision="hybris-12.1" >
+<project path="device/lge/mako"
+name="ballock/android_device_lge_mako"
+revision="hybris-12.1" />
+<project path="kernel/google/msm"
+name="ballock/android_kernel_google_msm"
+revision="hybris-12.1" />
+<project path="rpm/"
+name="ballock/droid-hal-mako" revision="master" />
+<project path="hybris/droid-configs"
+name="ballock/droid-config-mako" revision="master" />
+<project path="frameworks/av"
+name="ballock/android_frameworks_av"
+revision="hybris-12.1-YOG4P" />
+<project path="system/core"
+name="ballock/android_system_core"
+revision="hybris-12.1-YOG4P" />
+<project path="hybris/droid-hal-version-mako"
+name="mer-hybris/droid-hal-version-mako" revision="master" />
+
+
+  <project path="build" name="ballock/android_build" groups="pdk,tradefed" revision="hybris-12.1-YOG4P" >
     <copyfile src="core/root.mk" dest="Makefile" />
   </project>
+  <project path="bionic" name="ballock/android_bionic" groups="pdk" revision="hybris-12.1-YOG4P" />
+  <project path="frameworks/base" name="ballock/android_frameworks_base" revision="hybris-12.1-YOG4P" />
+  <project path="frameworks/native" name="ballock/android_frameworks_native" groups="pdk" revision="hybris-12.1-YOG4P" />
+  <project path="hardware/libhardware" name="ballock/android_hardware_libhardware" groups="pdk" revision="hybris-12.1-YOG4P" />
+
+
+
 
   <project path="hybris/hybris-boot" name="mer-hybris/hybris-boot" revision="master"/>
   <project path="hybris/mer-kernel-check" name="mer-hybris/mer-kernel-check" revision="master" />
   <project path="external/droidmedia" name="sailfishos/droidmedia" revision="master" />
   <project path="external/audioflingerglue" name="mer-hybris/audioflingerglue" revision="master" />
+
+
 
 <!--
   <project path="android" name="CyanogenMod/android" />
@@ -31,7 +60,6 @@
 <!--
   <project path="art" name="CyanogenMod/android_art" groups="pdk" />
 -->
-  <project path="bionic" name="mer-hybris/android_bionic" groups="pdk" revision="hybris-12.1" />
   <project path="bootable/recovery" name="CyanogenMod/android_bootable_recovery" groups="pdk" />
 <!--
   <project path="cts" name="CyanogenMod/android_cts" groups="cts,pdk-cw-fs" />
@@ -396,8 +424,6 @@
   <project path="external/zopfli" name="platform/external/zopfli" groups="pdk-cw-fs" remote="aosp" />
   <project path="external/zxing" name="platform/external/zxing" groups="pdk-cw-fs" remote="aosp" />
 -->
-  <project path="frameworks/av" name="CyanogenMod/android_frameworks_av" groups="pdk" />
-  <project path="frameworks/base" name="mer-hybris/android_frameworks_base" revision="hybris-12.1" />
 <!--
   <project path="frameworks/compile/libbcc" name="CyanogenMod/android_frameworks_compile_libbcc" groups="pdk" />
   <project path="frameworks/compile/mclinker" name="CyanogenMod/android_frameworks_compile_mclinker" groups="pdk" />
@@ -408,7 +434,6 @@
   <project path="frameworks/ml" name="CyanogenMod/android_frameworks_ml" />
   <project path="frameworks/multidex" name="CyanogenMod/android_frameworks_multidex" groups="pdk-cw-fs" />
 -->
-  <project path="frameworks/native" name="mer-hybris/android_frameworks_native" groups="pdk" revision="hybris-12.1" />
 <!--
   <project path="frameworks/opt/bitmap" name="CyanogenMod/android_frameworks_opt_bitmap" />
   <project path="frameworks/opt/bluetooth" name="CyanogenMod/android_frameworks_opt_bluetooth" groups="pdk-cw-fs" />
@@ -462,43 +487,42 @@
   <project path="hardware/intel/img/psb_video" name="platform/hardware/intel/img/psb_video" groups="intel" remote="aosp" />
   <project path="hardware/invensense" name="CyanogenMod/android_hardware_invensense" groups="invensense" />
 -->
-  <project path="hardware/libhardware" name="mer-hybris/android_hardware_libhardware" groups="pdk" revision="hybris-12.1" />
   <project path="hardware/libhardware_legacy" name="CyanogenMod/android_hardware_libhardware_legacy" groups="pdk" />
   <project path="hardware/nvidia/audio" name="CyanogenMod/android_hardware_nvidia_audio" groups="nvidia_audio" />
   <project path="hardware/nvidia/tegra124" name="CyanogenMod/android_hardware_nvidia_tegra124" groups="tegra124" />
   <project path="hardware/qcom/audio/default" name="CyanogenMod/android_hardware_qcom_audio" groups="qcom,qcom_audio" />
-  <project path="hardware/qcom/audio-caf/apq8084" name="CyanogenMod/android_hardware_qcom_audio" groups="qcom,qcom_audio" revision="stable/cm-12.1-caf-8084-YOG7D" />
+  <project path="hardware/qcom/audio-caf/apq8084" name="CyanogenMod/android_hardware_qcom_audio" groups="qcom,qcom_audio" revision="stable/cm-12.1-caf-8084-YOG4P" />
 <!--
-  <project path="hardware/qcom/audio-caf/msm8226" name="CyanogenMod/android_hardware_qcom_audio" groups="qcom,qcom_audio" revision="stable/cm-12.1-caf-8226-YOG7D" />
-  <project path="hardware/qcom/audio-caf/msm8610" name="CyanogenMod/android_hardware_qcom_audio" groups="qcom,qcom_audio" revision="stable/cm-12.1-caf-8610-YOG7D" />
+  <project path="hardware/qcom/audio-caf/msm8226" name="CyanogenMod/android_hardware_qcom_audio" groups="qcom,qcom_audio" revision="stable/cm-12.1-caf-8226-YOG4P" />
+  <project path="hardware/qcom/audio-caf/msm8610" name="CyanogenMod/android_hardware_qcom_audio" groups="qcom,qcom_audio" revision="stable/cm-12.1-caf-8610-YOG4P" />
 -->
-  <project path="hardware/qcom/audio-caf/msm8916" name="CyanogenMod/android_hardware_qcom_audio" groups="qcom,qcom_audio" revision="stable/cm-12.1-caf-8916-YOG7D" />
-  <project path="hardware/qcom/audio-caf/msm8960" name="CyanogenMod/android_hardware_qcom_audio" groups="qcom,qcom_audio" revision="stable/cm-12.1-caf-8960-YOG7D" />
-  <project path="hardware/qcom/audio-caf/msm8974" name="CyanogenMod/android_hardware_qcom_audio" groups="qcom,qcom_audio" revision="stable/cm-12.1-caf-8974-YOG7D" />
-  <project path="hardware/qcom/audio-caf/msm8994" name="CyanogenMod/android_hardware_qcom_audio" groups="qcom,qcom_audio" revision="stable/cm-12.1-caf-8994-YOG7D" />
+  <project path="hardware/qcom/audio-caf/msm8916" name="CyanogenMod/android_hardware_qcom_audio" groups="qcom,qcom_audio" revision="stable/cm-12.1-caf-8916-YOG4P" />
+  <project path="hardware/qcom/audio-caf/msm8960" name="CyanogenMod/android_hardware_qcom_audio" groups="qcom,qcom_audio" revision="stable/cm-12.1-caf-8960-YOG4P" />
+  <project path="hardware/qcom/audio-caf/msm8974" name="CyanogenMod/android_hardware_qcom_audio" groups="qcom,qcom_audio" revision="stable/cm-12.1-caf-8974-YOG4P" />
+  <project path="hardware/qcom/audio-caf/msm8994" name="CyanogenMod/android_hardware_qcom_audio" groups="qcom,qcom_audio" revision="stable/cm-12.1-caf-8994-YOG4P" />
   <project path="hardware/qcom/bt" name="CyanogenMod/android_hardware_qcom_bt" groups="qcom" />
   <project path="hardware/qcom/display" name="CyanogenMod/android_hardware_qcom_display" groups="qcom,qcom_display" />
-  <project path="hardware/qcom/display-caf/apq8084" name="CyanogenMod/android_hardware_qcom_display" groups="qcom,qcom_display" revision="stable/cm-12.1-caf-8084-YOG7D" />
+  <project path="hardware/qcom/display-caf/apq8084" name="CyanogenMod/android_hardware_qcom_display" groups="qcom,qcom_display" revision="stable/cm-12.1-caf-8084-YOG4P" />
 <!--
-  <project path="hardware/qcom/display-caf/msm8226" name="CyanogenMod/android_hardware_qcom_display" groups="qcom,qcom_display" revision="stable/cm-12.1-caf-8226-YOG7D" />
-  <project path="hardware/qcom/display-caf/msm8610" name="CyanogenMod/android_hardware_qcom_display" groups="qcom,qcom_display" revision="stable/cm-12.1-caf-8610-YOG7D" />
+  <project path="hardware/qcom/display-caf/msm8226" name="CyanogenMod/android_hardware_qcom_display" groups="qcom,qcom_display" revision="stable/cm-12.1-caf-8226-YOG4P" />
+  <project path="hardware/qcom/display-caf/msm8610" name="CyanogenMod/android_hardware_qcom_display" groups="qcom,qcom_display" revision="stable/cm-12.1-caf-8610-YOG4P" />
 -->
-  <project path="hardware/qcom/display-caf/msm8916" name="CyanogenMod/android_hardware_qcom_display" groups="qcom,qcom_display" revision="stable/cm-12.1-caf-8916-YOG7D" />
-  <project path="hardware/qcom/display-caf/msm8960" name="CyanogenMod/android_hardware_qcom_display" groups="qcom,qcom_display" revision="stable/cm-12.1-caf-8960-YOG7D" />
-  <project path="hardware/qcom/display-caf/msm8974" name="CyanogenMod/android_hardware_qcom_display" groups="qcom,qcom_display" revision="stable/cm-12.1-caf-8974-YOG7D" />
-  <project path="hardware/qcom/display-caf/msm8994" name="CyanogenMod/android_hardware_qcom_display" groups="qcom,qcom_display" revision="stable/cm-12.1-caf-8994-YOG7D" />
+  <project path="hardware/qcom/display-caf/msm8916" name="CyanogenMod/android_hardware_qcom_display" groups="qcom,qcom_display" revision="stable/cm-12.1-caf-8916-YOG4P" />
+  <project path="hardware/qcom/display-caf/msm8960" name="CyanogenMod/android_hardware_qcom_display" groups="qcom,qcom_display" revision="stable/cm-12.1-caf-8960-YOG4P" />
+  <project path="hardware/qcom/display-caf/msm8974" name="CyanogenMod/android_hardware_qcom_display" groups="qcom,qcom_display" revision="stable/cm-12.1-caf-8974-YOG4P" />
+  <project path="hardware/qcom/display-caf/msm8994" name="CyanogenMod/android_hardware_qcom_display" groups="qcom,qcom_display" revision="stable/cm-12.1-caf-8994-YOG4P" />
   <project path="hardware/qcom/gps" name="CyanogenMod/android_hardware_qcom_gps" groups="qcom" />
   <project path="hardware/qcom/keymaster" name="CyanogenMod/android_hardware_qcom_keymaster" groups="qcom" />
   <project path="hardware/qcom/media/default" name="CyanogenMod/android_hardware_qcom_media" groups="qcom" />
-  <project path="hardware/qcom/media-caf/apq8084" name="CyanogenMod/android_hardware_qcom_media" groups="qcom" revision="stable/cm-12.1-caf-8084-YOG7D" />
+  <project path="hardware/qcom/media-caf/apq8084" name="CyanogenMod/android_hardware_qcom_media" groups="qcom" revision="stable/cm-12.1-caf-8084-YOG4P" />
 <!--
-  <project path="hardware/qcom/media-caf/msm8226" name="CyanogenMod/android_hardware_qcom_media" groups="qcom" revision="stable/cm-12.1-caf-8226-YOG7D" />
-  <project path="hardware/qcom/media-caf/msm8610" name="CyanogenMod/android_hardware_qcom_media" groups="qcom" revision="stable/cm-12.1-caf-8610-YOG7D" />
+  <project path="hardware/qcom/media-caf/msm8226" name="CyanogenMod/android_hardware_qcom_media" groups="qcom" revision="stable/cm-12.1-caf-8226-YOG4P" />
+  <project path="hardware/qcom/media-caf/msm8610" name="CyanogenMod/android_hardware_qcom_media" groups="qcom" revision="stable/cm-12.1-caf-8610-YOG4P" />
 -->
-  <project path="hardware/qcom/media-caf/msm8916" name="CyanogenMod/android_hardware_qcom_media" groups="qcom" revision="stable/cm-12.1-caf-8916-YOG7D" />
-  <project path="hardware/qcom/media-caf/msm8960" name="CyanogenMod/android_hardware_qcom_media" groups="qcom" revision="stable/cm-12.1-caf-8960-YOG7D" />
-  <project path="hardware/qcom/media-caf/msm8974" name="CyanogenMod/android_hardware_qcom_media" groups="qcom" revision="stable/cm-12.1-caf-8974-YOG7D" />
-  <project path="hardware/qcom/media-caf/msm8994" name="CyanogenMod/android_hardware_qcom_media" groups="qcom" revision="stable/cm-12.1-caf-8994-YOG7D" />
+  <project path="hardware/qcom/media-caf/msm8916" name="CyanogenMod/android_hardware_qcom_media" groups="qcom" revision="stable/cm-12.1-caf-8916-YOG4P" />
+  <project path="hardware/qcom/media-caf/msm8960" name="CyanogenMod/android_hardware_qcom_media" groups="qcom" revision="stable/cm-12.1-caf-8960-YOG4P" />
+  <project path="hardware/qcom/media-caf/msm8974" name="CyanogenMod/android_hardware_qcom_media" groups="qcom" revision="stable/cm-12.1-caf-8974-YOG4P" />
+  <project path="hardware/qcom/media-caf/msm8994" name="CyanogenMod/android_hardware_qcom_media" groups="qcom" revision="stable/cm-12.1-caf-8994-YOG4P" />
   <project path="hardware/qcom/msm8960" name="platform/hardware/qcom/msm8960" groups="qcom_msm8960" remote="aosp" />
   <project path="hardware/qcom/msm8x26" name="platform/hardware/qcom/msm8x26" groups="qcom_msm8x26" remote="aosp" />
   <project path="hardware/qcom/msm8x27" name="platform/hardware/qcom/msm8x27" groups="qcom_msm8x27" remote="aosp" />
@@ -506,7 +530,7 @@
   <project path="hardware/qcom/msm8x84" name="platform/hardware/qcom/msm8x84" groups="qcom_msm8x84" remote="aosp" />
   <project path="hardware/qcom/wlan" name="CyanogenMod/android_hardware_qcom_wlan" groups="qcom_wlan" />
   <project path="hardware/ril" name="CyanogenMod/android_hardware_ril" groups="pdk" />
-  <project path="hardware/ril-caf" name="CyanogenMod/android_hardware_ril" groups="pdk" revision="stable/cm-12.1-caf-YOG7D" />
+  <project path="hardware/ril-caf" name="CyanogenMod/android_hardware_ril" groups="pdk" revision="stable/cm-12.1-caf-YOG4P" />
   <project path="hardware/samsung_slsi/exynos5" name="CyanogenMod/android_hardware_samsung_slsi_exynos5" />
   <project path="hardware/ti/omap4" name="CyanogenMod/android_hardware_ti_omap4" />
   <project path="hardware/ti/omap4-aah" name="platform/hardware/ti/omap4-aah" groups="omap4-aah" remote="aosp" />
@@ -576,7 +600,6 @@
   <project path="prebuilts/sdk" name="platform/prebuilts/sdk" groups="pdk" remote="aosp" />
   <project path="prebuilts/tools" name="platform/prebuilts/tools" groups="pdk,tools" remote="aosp" />
   <project path="sdk" name="platform/sdk" remote="aosp" />
-  <project path="system/core" name="mer-hybris/android_system_core" groups="pdk" revision="hybris-12.1" />
   <project path="system/extras" name="CyanogenMod/android_system_extras" groups="pdk" />
 <!--
   <project path="system/extras/su" name="CyanogenMod/android_system_extras_su" />
