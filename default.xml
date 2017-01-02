@@ -109,7 +109,7 @@
   <project path="external/libnfnetlink" name="CyanogenMod/android_external_libnfnetlink" />
   <project path="external/libphonenumbergoogle" name="CyanogenMod/android_external_libphonenumbergoogle" />
 -->
-  <project path="external/libpng" name="CyanogenMod/android_external_libpng" groups="pdk" />
+  <project path="external/libpng" name="platform/external/libpng" groups="pdk" remote="aosp" />
   <project path="external/libselinux" name="CyanogenMod/android_external_libselinux" groups="pdk" />
 <!--
   <project path="external/libtar" name="CyanogenMod/android_external_libtar" />
